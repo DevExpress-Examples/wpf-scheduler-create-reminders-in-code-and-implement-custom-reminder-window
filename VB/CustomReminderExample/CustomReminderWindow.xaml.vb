@@ -14,14 +14,14 @@ Imports DevExpress.Xpf.Core
 
 
 Namespace CustomReminderExample
-    ''' <summary>
-    ''' Interaction logic for CustomReminderWindow.xaml
-    ''' </summary>
-    Partial Public Class CustomReminderWindow
-        Inherits DXWindow
+	''' <summary>
+	''' Interaction logic for CustomReminderWindow.xaml
+	''' </summary>
+	Partial Public Class CustomReminderWindow
+		Inherits DXWindow
 
-        Public Sub New()
-            InitializeComponent()
-        End Sub
-    End Class
+		Public Sub New()
+			InitializeComponent()
+		End Sub
+	End Class
 End Namespace
