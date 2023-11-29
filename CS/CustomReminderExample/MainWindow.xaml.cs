@@ -1,29 +1,14 @@
 ﻿using DevExpress.Xpf.Scheduling;
 using DevExpress.XtraScheduler;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CustomReminderExample {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
         }
-        #region #RemindersWindowShowing
         private void Scheduler_RemindersWindowShowing(object sender, DevExpress.Xpf.Scheduling.RemindersWindowShowingEventArgs e) {
             if (e.TriggeredReminders.Any(r => r.Appointment.Subject.Contains("test"))) {
                 DevExpress.Xpf.Scheduling.Visual.RemindersWindow reminderWindow = new DevExpress.Xpf.Scheduling.Visual.RemindersWindow();
@@ -31,7 +16,6 @@ namespace CustomReminderExample {
                 e.Window = reminderWindow;
             }
         }
-        #endregion #RemindersWindowShowing
 
         private void Scheduler_InitNewAppointment(object sender, DevExpress.Xpf.Scheduling.AppointmentItemEventArgs e) {
             AddAppointmentReminders(e.Appointment);
@@ -45,7 +29,6 @@ namespace CustomReminderExample {
         }
 
         private static void AddAppointmentReminders(AppointmentItem appointment) {
-            #region #AddAppointmentReminders
             // Remove previous reminders
             appointment.Reminders.Clear();
             // Set multiple reminders for an appointment
@@ -56,7 +39,6 @@ namespace CustomReminderExample {
 
             appointment.Reminders.Add(reminder1);
             appointment.Reminders.Add(reminder2);
-            #endregion #AddAppointmentReminders
         }
     }
 }
