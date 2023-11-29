@@ -1,5 +1,4 @@
-Imports System.Windows.Controls
-Imports DevExpress.Xpf.Core
+Imports System.Windows
 
 Namespace CustomReminderExample
 
@@ -7,7 +6,7 @@ Namespace CustomReminderExample
     ''' Interaction logic for CustomReminderWindow.xaml
     ''' </summary>
     Public Partial Class CustomReminderWindow
-        Inherits DXWindow
+        Inherits Window
 
         Public Sub New()
             Me.InitializeComponent()

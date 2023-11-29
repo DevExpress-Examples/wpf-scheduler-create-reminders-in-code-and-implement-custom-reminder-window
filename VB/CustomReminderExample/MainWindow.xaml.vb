@@ -3,13 +3,9 @@ Imports DevExpress.XtraScheduler
 Imports System
 Imports System.Linq
 Imports System.Windows
-Imports System.Windows.Controls
 
 Namespace CustomReminderExample
 
-    ''' <summary>
-    ''' Interaction logic for MainWindow.xaml
-    ''' </summary>
     Public Partial Class MainWindow
         Inherits Window
 
@@ -17,16 +13,14 @@ Namespace CustomReminderExample
             Me.InitializeComponent()
         End Sub
 
-#Region "#RemindersWindowShowing"
         Private Sub Scheduler_RemindersWindowShowing(ByVal sender As Object, ByVal e As RemindersWindowShowingEventArgs)
             If e.TriggeredReminders.Any(Function(r) r.Appointment.Subject.Contains("test")) Then
-                Dim reminderWindow As DevExpress.Xpf.Scheduling.Visual.RemindersWindow = New DevExpress.Xpf.Scheduling.Visual.RemindersWindow()
+                Dim reminderWindow As Visual.RemindersWindow = New Visual.RemindersWindow()
                 reminderWindow.DataContext = New VisualData.RemindersWindowViewModel(Me.scheduler)
                 e.Window = reminderWindow
             End If
         End Sub
 
-#End Region  ' #RemindersWindowShowing
         Private Sub Scheduler_InitNewAppointment(ByVal sender As Object, ByVal e As AppointmentItemEventArgs)
             Call AddAppointmentReminders(e.Appointment)
         End Sub
@@ -38,7 +32,6 @@ Namespace CustomReminderExample
         End Sub
 
         Private Shared Sub AddAppointmentReminders(ByVal appointment As AppointmentItem)
-#Region "#AddAppointmentReminders"
             ' Remove previous reminders
             appointment.Reminders.Clear()
             ' Set multiple reminders for an appointment
@@ -48,7 +41,6 @@ Namespace CustomReminderExample
             reminder2.TimeBeforeStart = New TimeSpan(0, 30, 0)
             appointment.Reminders.Add(reminder1)
             appointment.Reminders.Add(reminder2)
-#End Region  ' #AddAppointmentReminders
         End Sub
     End Class
 End Namespace
